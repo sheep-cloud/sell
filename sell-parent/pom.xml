@@ -5,10 +5,10 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>sell-parent :: Spring Boot企业微信点餐系统</name>
-  
-  	<!-- 
-		! Centralized definition of dependent versions
-	 -->
+    
+    <!--
+        !  Centralized definition of dependent versions
+     -->
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,20 +26,20 @@
         <mapper-spring-boot.verion>2.0.2</mapper-spring-boot.verion>
         <pagehelper-spring-boot.verion>1.2.5</pagehelper-spring-boot.verion>
     </properties>
-
-	<!-- 
-		! Centralized management dependence	
-	 -->
+    
+    <!-- 
+        ! Centralized management dependence 
+     -->
     <dependencyManagement>
         <dependencies>
-			<!-- colg-dependencies -->
+            <!-- colg-dependencies -->
             <dependency>
                 <groupId>cn.colg</groupId>
                 <artifactId>colg-dependencies</artifactId>
                 <version>${colg.version}</version>
             </dependency>
-
-			<!-- spirng-boot -->
+            
+            <!-- spirng-boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

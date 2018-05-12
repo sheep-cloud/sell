@@ -45,16 +45,4 @@ public class ResultVO implements Serializable {
     /** 具体内容 */
     @JSONField(ordinal = 3)
     private Object data;
-
-    /// ----------------------------------------------------------------------------------------------------
-
-    /**
-     * 未知异常
-     *
-     * @param e
-     */
-    public ResultVO(Throwable e) {
-        this.msg = e.toString();
-        this.code = UNKNOWN_FAIL;
-    }
 }

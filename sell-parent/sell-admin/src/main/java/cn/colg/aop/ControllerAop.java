@@ -26,13 +26,13 @@ public class ControllerAop {
 
     @Around("controllerMethod()")
     public ResultVO handlerControllerMethod(ProceedingJoinPoint point) {
-        long startTime = System.currentTimeMillis();
+        long preTime = System.currentTimeMillis();
 
         ResultVO resultVO = new ResultVO();
         try {
             // 执行目标方法
             resultVO = (ResultVO)point.proceed();
-            log.info(point.getSignature() + " USE TIME: [{}ms]", DateUtil.spendMs(startTime));
+            log.info(point.getSignature() + " >> use time: [{}ms]", DateUtil.spendMs(preTime));
         } catch (Throwable e) {
             // 执行目标方法异常，包装异常
             resultVO = handlerException(point, e);
@@ -53,13 +53,14 @@ public class ControllerAop {
         // 已知异常
         if (e instanceof CheckException || e instanceof IllegalArgumentException) {
             // 校验出错，参数非法
-            resultVO.setMsg(e.getLocalizedMessage());
-            resultVO.setCode(ResultVO.CHECK_FAIL);
+            resultVO.setMsg(e.getLocalizedMessage())
+                    .setCode(ResultVO.CHECK_FAIL);
         }
         // 未知异常
         else {
             log.error(point.getSignature() + " ERROR {}", e);
-            resultVO = new ResultVO(e);
+            resultVO.setMsg(e.toString())
+                    .setCode(ResultVO.UNKNOWN_FAIL);
         }
 
         return resultVO;

@@ -1,26 +1,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>cn.colg</groupId>
-		<artifactId>sell-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<artifactId>sell-api</artifactId>
-	<name>sell-api :: 通用模块</name>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.colg</groupId>
+        <artifactId>sell-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>sell-api</artifactId>
+    <name>sell-api :: 通用模块</name>
 
-	<dependencies>
-		<!-- colg-dependencies -->
-		<dependency>
-			<groupId>cn.colg</groupId>
-			<artifactId>colg-dependencies</artifactId>
-		</dependency>
-			
-		<!-- mapper -->
-		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper</artifactId>
-			<version>${mapper.version}</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <!-- colg-dependencies -->
+        <dependency>
+            <groupId>cn.colg</groupId>
+            <artifactId>colg-dependencies</artifactId>
+        </dependency>
+        
+        <!-- mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${mapper.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

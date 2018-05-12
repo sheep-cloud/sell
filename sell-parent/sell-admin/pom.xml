@@ -9,14 +9,14 @@
     <name>sell-admin :: 后台系统</name>
 
     <dependencies>
-		<!-- sell-api -->
+        <!-- sell-api -->
         <dependency>
             <groupId>cn.colg</groupId>
             <artifactId>sell-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-		<!-- spirng-boot -->
+        
+        <!-- spirng-boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -51,25 +51,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-
-		<!-- mysql -->
+        
+        <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-		<!-- druid -->
+        <!-- druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.version}</version>
         </dependency>
-		<!-- mapper -->
+        <!-- mapper -->
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
             <version>${mapper-spring-boot.verion}</version>
         </dependency>
-		<!-- pagehelper（包含了 mybatis-spring-boot-starter） -->
+        <!-- pagehelper（包含了 mybatis-spring-boot-starter） -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
