@@ -19,11 +19,14 @@ public class ProductVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /** 商品类目名称 */
     @JSONField(name = "name")
     private String categoryName;
+    /** 商品类目编号 */
     @JSONField(name = "type")
     private Integer categoryType;
 
+    /** 商品信息列表 */
     @JSONField(name = "foods")
     private List<ProductInfoVO> productInfoVOList;
 }

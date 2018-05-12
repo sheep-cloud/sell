@@ -18,15 +18,10 @@
 		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
 		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
 		<skipTests>true</skipTests>
-		<junit.version>4.12</junit.version>
-		<lombok.version>1.16.20</lombok.version>
-		<hutool.version>4.0.12</hutool.version>
-		<fastjson.version>1.2.47</fastjson.version>
+		<colg.version>0.0.1</colg.version>
 		<sprign-boot.version>1.5.12.RELEASE</sprign-boot.version>
-		<swagger2.version>2.8.0</swagger2.version>
 		<mysql.version>5.1.46</mysql.version>
 		<druid.version>1.1.9</druid.version>
-		<mybatis.version>1.3.2</mybatis.version>
 		<mapper.version>4.0.2</mapper.version>
 		<mapper-spring-boot.verion>2.0.2</mapper-spring-boot.verion>
 		<pagehelper-spring-boot.verion>1.2.5</pagehelper-spring-boot.verion>
@@ -37,68 +32,20 @@
 	 -->
 	<dependencyManagement>
 		<dependencies>
-			<!-- junit 依赖 -->
+			<!-- colg-dependencies -->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-			</dependency>
-			<!-- lombok 依赖 -->
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-			<!-- hutool 依赖 -->
-			<dependency>
-				<groupId>cn.hutool</groupId>
-				<artifactId>hutool-all</artifactId>
-				<version>${hutool.version}</version>
-			</dependency>
-			<!-- fastjson 依赖 -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>fastjson</artifactId>
-				<version>${fastjson.version}</version>
+				<groupId>cn.colg</groupId>
+				<artifactId>colg-dependencies</artifactId>
+				<version>${colg.version}</version>
 			</dependency>
 
-			<!-- spirng-boot 依赖 -->
+			<!-- spirng-boot -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${sprign-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-        	<!-- swagger2 依赖-->
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>${swagger2.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>${swagger2.version}</version>
-			</dependency>
-
-			<!-- mysql 依赖 -->
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.version}</version>
-			</dependency>
-			<!-- druid 依赖 -->
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>druid</artifactId>
-				<version>${druid.version}</version>
-			</dependency>
-			<!-- mybatis 依赖 -->
-			<dependency>
-				<groupId>org.mybatis.spring.boot</groupId>
-				<artifactId>mybatis-spring-boot-starter</artifactId>
-				<version>${mybatis.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
