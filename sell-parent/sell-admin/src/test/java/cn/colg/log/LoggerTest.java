@@ -2,7 +2,6 @@ package cn.colg.log;
 
 import org.junit.Test;
 
-import cn.colg.BaseTest;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -11,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author colg
  */
 @Slf4j
-public class LoggerTest extends BaseTest {
+public class LoggerTest {
 
     @Test
     public void testLog() throws Exception {
