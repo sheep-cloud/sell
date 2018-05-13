@@ -1,11 +1,12 @@
 package cn.colg.vo;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-import lombok.Data;
+import cn.colg.core.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
@@ -13,9 +14,10 @@ import lombok.experimental.Accessors;
  *
  * @author colg
  */
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
-public class ProductInfoVO implements Serializable {
+public class ProductInfoVO extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 

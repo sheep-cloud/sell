@@ -3,6 +3,7 @@ package cn.colg.service;
 import java.util.List;
 
 import cn.colg.entity.ProductCategory;
+import cn.colg.vo.ProductVO;
 
 /**
  * 商品类目Service
@@ -41,5 +42,12 @@ public interface ProductCategoryService {
      * @return
      */
     ProductCategory save(ProductCategory productCategory);
+
+    /**
+     * 买家商品列表（包含类目）
+     *
+     * @return
+     */
+    List<ProductVO> list();
 
 }

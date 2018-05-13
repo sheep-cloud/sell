@@ -1,6 +1,5 @@
 package cn.colg.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,9 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import cn.colg.config.UUIdGenId;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import cn.colg.core.BaseEntity;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import tk.mybatis.mapper.annotation.KeySql;
 
@@ -21,11 +21,11 @@ import tk.mybatis.mapper.annotation.KeySql;
  * @author colg
  */
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
 @Table(name = "order_detail")
-public class OrderDetail implements Serializable {
+public class OrderDetail extends BaseEntity {
     /**
      * 订单明细id
      */

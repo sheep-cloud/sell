@@ -15,4 +15,6 @@ public abstract class BaseController {
     protected ProductCategoryService productCategoryService;
     @Autowired
     protected ProductInfoService productInfoService;
+    @Autowired
+    protected OrderService orderService;
 }

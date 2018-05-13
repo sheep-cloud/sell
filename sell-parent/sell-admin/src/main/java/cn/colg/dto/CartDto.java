@@ -1,10 +1,10 @@
 package cn.colg.dto;
 
-import java.io.Serializable;
-
+import cn.colg.core.BaseEntity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
@@ -14,9 +14,10 @@ import lombok.experimental.Accessors;
  */
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
-public class CartDto implements Serializable {
+public class CartDto extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,5 +25,4 @@ public class CartDto implements Serializable {
     private String productId;
     /** 商品数量 */
     private Integer productQuantity;
-
 }

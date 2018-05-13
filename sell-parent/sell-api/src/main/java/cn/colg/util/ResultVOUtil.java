@@ -10,7 +10,11 @@ import cn.colg.vo.ResultVO;
 public class ResultVOUtil {
 
     public static ResultVO success(Object data) {
-        return new ResultVO(ResultVO.SUCCESS, ResultVO.MSG_SUCCESS, data);
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(ResultVO.SUCCESS)
+                .setMsg(ResultVO.MSG_SUCCESS)
+                .setData(data);
+        return resultVO;
     }
 
     public static ResultVO success() {
@@ -18,6 +22,9 @@ public class ResultVOUtil {
     }
 
     public static ResultVO fail(Integer code, String msg) {
-        return new ResultVO(code, msg, null);
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(code)
+                .setMsg(msg);
+        return resultVO;
     }
 }

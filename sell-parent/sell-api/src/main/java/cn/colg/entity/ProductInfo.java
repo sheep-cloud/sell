@@ -1,14 +1,16 @@
 package cn.colg.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import cn.colg.config.UUIdGenId;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cn.colg.core.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import tk.mybatis.mapper.annotation.KeySql;
 
@@ -17,12 +19,11 @@ import tk.mybatis.mapper.annotation.KeySql;
  *
  * @author colg
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
 @Table(name = "product_info")
-public class ProductInfo implements Serializable {
+public class ProductInfo extends BaseEntity {
     /**
      * 商品id
      */
@@ -66,7 +67,7 @@ public class ProductInfo implements Serializable {
      */
     @Column(name = "product_icon")
     private String productIcon;
-    
+
     /**
      * 状态（0正常，1下架；默认0）
      */

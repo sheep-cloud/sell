@@ -1,12 +1,10 @@
 package cn.colg.vo;
 
-import java.io.Serializable;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cn.colg.core.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
@@ -14,11 +12,10 @@ import lombok.experimental.Accessors;
  *
  * @author colg
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
-public class ResultVO implements Serializable {
+public class ResultVO extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,12 +34,10 @@ public class ResultVO implements Serializable {
     /// ----------------------------------------------------------------------------------------------------
 
     /** 错误码 */
-    @JSONField(ordinal = 1)
     private Integer code;
     /** 提示信息 */
-    @JSONField(ordinal = 2)
     private String msg;
     /** 具体内容 */
-    @JSONField(ordinal = 3)
+    @JSONField(ordinal = 1)
     private Object data;
 }

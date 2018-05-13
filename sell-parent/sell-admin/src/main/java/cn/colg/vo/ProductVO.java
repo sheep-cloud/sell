@@ -1,11 +1,12 @@
 package cn.colg.vo;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-import lombok.Data;
+import cn.colg.core.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
@@ -13,9 +14,10 @@ import lombok.experimental.Accessors;
  *
  * @author colg
  */
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
-public class ProductVO implements Serializable {
+public class ProductVO extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,6 +29,6 @@ public class ProductVO implements Serializable {
     private Integer categoryType;
 
     /** 商品信息列表 */
-    @JSONField(name = "foods")
+    @JSONField(name = "foods", ordinal = 1)
     private List<ProductInfoVO> productInfoVOList;
 }

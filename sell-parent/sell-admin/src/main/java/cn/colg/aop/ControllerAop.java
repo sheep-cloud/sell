@@ -52,13 +52,14 @@ public class ControllerAop {
 
         // 已知异常
         if (e instanceof CheckException || e instanceof IllegalArgumentException) {
+            log.info(point.getSignature() + " 校验异常/参数非法 : {}", e.getLocalizedMessage());
             // 校验出错，参数非法
             resultVO.setMsg(e.getLocalizedMessage())
                     .setCode(ResultVO.CHECK_FAIL);
         }
         // 未知异常
         else {
-            log.error(point.getSignature() + " ERROR {}", e);
+            log.error(point.getSignature() + " ERROR : {}", e);
             resultVO.setMsg(e.toString())
                     .setCode(ResultVO.UNKNOWN_FAIL);
         }

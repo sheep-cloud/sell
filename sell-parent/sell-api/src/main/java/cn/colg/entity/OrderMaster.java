@@ -1,6 +1,5 @@
 package cn.colg.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -8,9 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import cn.colg.core.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
@@ -18,13 +17,12 @@ import lombok.experimental.Accessors;
  *
  * @author colg
  */
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
 @Table(name = "order_master")
-public class OrderMaster implements Serializable {
-    
+public class OrderMaster extends BaseEntity {
+
     // TODO colg [不能使用自动生成主键，因为要先创建订单明细表，由订单明细表里的订单id，来决定订单表的id是什么]
     /**
      * 订单id

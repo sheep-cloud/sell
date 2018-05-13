@@ -1,9 +1,8 @@
 package cn.colg.service;
 
-import static org.junit.Assert.fail;
-
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import cn.colg.BaseTest;
@@ -14,7 +13,7 @@ import cn.hutool.db.Page;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 
+ * 订单Service 测试
  *
  * @author colg
  */
@@ -27,6 +26,7 @@ public class OrderServiceTest extends BaseTest {
     /**
      * Test method for {@link cn.colg.service.OrderService#create(cn.colg.dto.OrderDto)}.
      */
+    @Ignore
     @Test
     public void testCreate() {
         OrderDto orderDto = new OrderDto();
@@ -67,6 +67,7 @@ public class OrderServiceTest extends BaseTest {
     /**
      * Test method for {@link cn.colg.service.OrderService#cancel(cn.colg.dto.OrderDto)}.
      */
+    @Ignore
     @Test
     public void testCancel() {
         String orderId = "5aca32acd86f4be586b197b2d9aa0f6c";
@@ -78,17 +79,25 @@ public class OrderServiceTest extends BaseTest {
     /**
      * Test method for {@link cn.colg.service.OrderService#finish(cn.colg.dto.OrderDto)}.
      */
+    @Ignore
     @Test
     public void testFinish() {
-        fail("Not yet implemented");
+        String orderId = "c55e55028a8c48a2b623ae02a01e091f";
+        OrderDto orderDto = orderService.findOne(orderId);
+        OrderDto dto = orderService.finish(orderDto);
+        log.info("OrderServiceTest.testFinish() >> 完结订单 : {}", dto);
     }
 
     /**
      * Test method for {@link cn.colg.service.OrderService#paid(cn.colg.dto.OrderDto)}.
      */
+    @Ignore
     @Test
     public void testPaid() {
-        fail("Not yet implemented");
+        String orderId = "c55e55028a8c48a2b623ae02a01e091f";
+        OrderDto orderDto = orderService.findOne(orderId);
+        OrderDto dto = orderService.paid(orderDto);
+        log.info("OrderServiceTest.testPaid() >> 支付订单 : {}", dto);
     }
-
+    
 }

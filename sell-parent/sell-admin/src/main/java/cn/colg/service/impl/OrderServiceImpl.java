@@ -46,11 +46,10 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
     @Override
     public OrderDto create(OrderDto orderDto) {
         /*
-         * colg  创建订单逻辑
+         * colg [创建订单逻辑]
          *  1. 查询商品（数量，价格）
          *  2. 计算订单总价（商品单价*商品数量 + 每个订单的总价）
-         *  3. 写入数据库（OrderMaster&OrderDetail）
-         *  4. 扣库存
+         *  3. 数据入库（OrderMaster&OrderDetail）
          */
 
         // 定义一个总价
@@ -78,9 +77,9 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
 
         // 3. 写入数据库（OrderMaster&OrderDetail）
         OrderMaster orderMaster = new OrderMaster();
+        orderDto.setOrderId(orderId)
+                .setOrderAmount(orderAmount);
         BeanUtil.copyProperties(orderDto, orderMaster);
-        orderMaster.setOrderId(orderId)
-                   .setOrderAmount(orderAmount);
         orderMasterMapper.insertSelective(orderMaster);
 
         // 4. 扣库存
@@ -98,6 +97,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         log.info("OrderServiceImpl.findOne() >> 订单ID : {}", orderMaster.getOrderId());
         
         List<OrderDetail> orderDetailList = orderDetailMapper.selectByOrderId(orderId);
+        
         check(CollUtil.isNotEmpty(orderDetailList), "订单详情不存在");
         log.info("OrderServiceImpl.findOne() >> 订单明细数量 : {}", orderDetailList.size());
         
@@ -124,10 +124,10 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
     @Override
     public OrderDto cancel(OrderDto orderDto) {
         /*
-         * colg  取消订单逻辑
+         * colg [取消订单逻辑]
          *  1. 判断订单状态
          *  2. 修改订单状态
-         *  3. 返回库存
+         *  3. 返回库存（加库存）
          *  4. 如果已支付，需要退款
          */
         
@@ -144,6 +144,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         // 返回库存（加库存）
         List<OrderDetail> orderDetailList = orderDto.getOrderDetailList();
         check(CollUtil.isNotEmpty(orderDetailList), "订单中无商品详情");
+        log.info("OrderServiceImpl.cancel() >> 订单明细数量 : {}", orderDetailList.size());
         
         List<CartDto> cartDtoList = orderDetailList.stream()
                                                    .map(e -> new CartDto(e.getProductId(), e.getProductQuantity()))
@@ -161,13 +162,48 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public OrderDto finish(OrderDto orderDto) {
-        return null;
+        /*
+         * colg [完结订单逻辑]
+         *  1. 判断订单状态
+         *  2. 修改订单状态
+         */
+        
+        // 判断订单状态
+        check(orderDto.getOrderStatus().intValue() == OrderStatusEnum.NEW.getStatus().intValue(), "订单状态不正确");
+        log.info("OrderServiceImpl.finish() >> 订单状态 : {}", orderDto.getOrderStatus());
+        
+        // 修改订单状态
+        orderDto.setOrderStatus(OrderStatusEnum.FINISHED.getStatus());
+        OrderMaster orderMaster = new OrderMaster();
+        BeanUtil.copyProperties(orderDto, orderMaster);
+        orderMasterMapper.updateByPrimaryKeySelective(orderMaster);
+        return orderDto;
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public OrderDto paid(OrderDto orderDto) {
-        return null;
+        /*
+         * colg [支付订单逻辑]
+         *  1. 判断订单状态
+         *  2. 判断支付状态
+         *  3. 修改支付状态
+         */
+        
+        // 判断订单状态
+        check(orderDto.getOrderStatus().intValue() == OrderStatusEnum.NEW.getStatus().intValue(), "订单状态不正确");
+        log.info("OrderServiceImpl.paid() >> 订单状态 : {}", orderDto.getOrderStatus());
+        
+        // 判断支付状态
+        check(orderDto.getPayStatus().intValue() == PayStatusEnum.WAIT.getStatus().intValue(), "订单支付状态不正确");
+        log.info("OrderServiceImpl.paid() >> 订单支付状态 : {}", orderDto.getPayStatus());
+        
+        // 修改支付状态
+        orderDto.setPayStatus(PayStatusEnum.SUCCESS.getStatus());
+        OrderMaster orderMaster = new OrderMaster();
+        BeanUtil.copyProperties(orderDto, orderMaster);
+        orderMasterMapper.updateByPrimaryKeySelective(orderMaster);
+        return orderDto;
     }
 
 }
