@@ -137,8 +137,8 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         
         // 修改订单状态
         OrderMaster orderMaster = new OrderMaster();
+        orderDto.setOrderStatus(OrderStatusEnum.CANCEL.getStatus());
         BeanUtil.copyProperties(orderDto, orderMaster);
-        orderMaster.setOrderStatus(OrderStatusEnum.CANCEL.getStatus());
         orderMasterMapper.updateByPrimaryKeySelective(orderMaster);
         
         // 返回库存（加库存）

@@ -17,4 +17,6 @@ public abstract class BaseController {
     protected ProductInfoService productInfoService;
     @Autowired
     protected OrderService orderService;
+    @Autowired
+    protected BuyerService buyerService;
 }

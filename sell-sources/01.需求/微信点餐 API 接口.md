@@ -243,3 +243,93 @@ size:10
 }
 ```
 
+## 4、订单详情
+
+-   接口：GET http://localhost:8001/sell/buyer/order/detail
+-   入参
+
+```json
+openid:1101110
+orderId:2bc75c68ed6e4ba882e4e0c7c0cd17f4
+```
+
+-   出参
+
+```json
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "buyerAddress": "MSI 全球冠军总决赛/FNC/蓝方中单",
+        "buyerName": "快乐风男",
+        "buyerOpenid": "1101110",
+        "buyerPhone": "18727019900",
+        "createTime": 1526166122,
+        "orderAmount": 9.9,
+        "orderId": "2bc75c68ed6e4ba882e4e0c7c0cd17f4",
+        "orderStatus": 0,
+        "payStatus": 0,
+        "updateTime": 1526166122,
+        "orderDetailList": [
+            {
+                "createTime": "2018-05-13 07:02:02",
+                "orderId": "2bc75c68ed6e4ba882e4e0c7c0cd17f4",
+                "orereDetailId": "95b25b705ca0496690e22cd4d5fa5a14",
+                "productIcon": "http://ww1.sinaimg.cn/large/005PjuVtgy1fr85jngsjxj30l40duhbm.jpg",
+                "productId": "7fae82066844431bb7d52da845c52f9c",
+                "productName": "清蒸皮皮虾",
+                "productPrice": 3.5,
+                "productQuantity": 1,
+                "updateTime": "2018-05-13 07:02:02"
+            },
+            {
+                "createTime": "2018-05-13 07:02:02",
+                "orderId": "2bc75c68ed6e4ba882e4e0c7c0cd17f4",
+                "orereDetailId": "a03b49a2f74f4af5bfc1ef15123143f4",
+                "productIcon": "http://ww1.sinaimg.cn/large/005PjuVtgy1fr85kggb1qj30h909en5b.jpg",
+                "productId": "e26b356109f546aeb25c8044a62e93dd",
+                "productName": "皮蛋瘦肉粥",
+                "productPrice": 3.2,
+                "productQuantity": 2,
+                "updateTime": "2018-05-13 07:02:02"
+            }
+        ]
+    }
+}
+```
+
+## 5、取消订单
+
+-   接口：POST http://localhost:8001/sell/buyer/order/cancel
+-   入参：
+
+```json
+openid:1101110
+orderId:a97203b41ff041adad57330aaf4b6c69
+```
+
+-   出参：
+
+```json
+{
+    "code": 0,
+    "msg": "success",
+    "data": null
+}
+```
+
+## 6、获取openid
+
+-   接口：重定向到 /sell/wechat/authorize
+-   入参：
+
+```json
+returnUrl: http://xxx.com/abc  //【必填】
+```
+
+-   出参：
+
+```json
+http://xxx.com/abc?openid=oZxSYw5ldcxv6H0EU67GgSXOUrVg
+```
+

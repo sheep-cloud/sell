@@ -77,4 +77,37 @@ public class BuyerOrderController extends BaseController {
         // TODO colg [fastjson 定制日期字段序列化格式]
         return success(orderService.findList(openid, p));
     }
+    
+    /**
+     * 订单详情
+     *
+     * @param openid
+     * @param orderId
+     * @return
+     */
+    @GetMapping("/detail")
+    public ResultVO detail(String openid, String orderId) {
+        notEmpty(openid, "微信openid必填");
+        notEmpty(orderId, "订单id必填");
+        
+        // TODO colg [不安全的做法，改进]
+        OrderDto orderDto = orderService.findOne(orderId);
+        return success(orderDto);
+    }
+    
+    /**
+     * 取消订单
+     *
+     * @param openid
+     * @param orderId
+     * @return
+     */
+    @PostMapping("/cancel")
+    public ResultVO cancel(String openid, String orderId) {
+        notEmpty(openid, "微信openid必填");
+        notEmpty(orderId, "订单id必填");
+
+        buyerService.cancelOrder(openid, orderId);
+        return success();
+    }
 }
