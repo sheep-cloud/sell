@@ -1,9 +1,9 @@
 package cn.colg.controller;
 
+import static cn.colg.core.util.ValidUtil.isMoblePhone;
 import static cn.colg.util.CheckUtil.check;
 import static cn.colg.util.CheckUtil.notEmpty;
 import static cn.colg.util.ResultVOUtil.success;
-import static cn.colg.util.ValidUtil.isMoblePhone;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

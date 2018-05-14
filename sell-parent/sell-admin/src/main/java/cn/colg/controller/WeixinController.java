@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.colg.core.BaseController;
-import cn.colg.exception.CheckException;
+import cn.colg.core.exception.CheckException;
 import cn.colg.weixin.WeixinUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;

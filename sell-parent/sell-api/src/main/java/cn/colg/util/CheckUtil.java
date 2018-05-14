@@ -1,6 +1,6 @@
 package cn.colg.util;
 
-import cn.colg.exception.CheckException;
+import cn.colg.core.exception.CheckException;
 import cn.hutool.core.util.StrUtil;
 
 /**
