@@ -38,7 +38,7 @@ public class WeixinController extends BaseController {
     @RequestMapping(value = "/portal", method = {RequestMethod.GET, RequestMethod.POST})
     public void config(String signature, String timestamp, String nonce, String echostr, HttpServletResponse response) throws IOException {
         log.info("接收到来自微信服务器的认证消息 : [{}, {}, {}, {}]", signature, timestamp, nonce, echostr);
-
+        
         if (StrUtil.hasBlank(signature, timestamp, nonce, echostr)) {
             throw new CheckException("请求参数非法，请核实!");
         }
