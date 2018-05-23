@@ -9,10 +9,27 @@
     <name>sell-api :: 通用模块</name>
 
     <dependencies>
-        <!-- colg-dependencies -->
+        <!-- junit -->
         <dependency>
-            <groupId>cn.colg</groupId>
-            <artifactId>colg-dependencies</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- hutool-core -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
         
         <!-- mapper -->

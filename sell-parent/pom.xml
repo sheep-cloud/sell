@@ -18,10 +18,10 @@
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <skipTests>true</skipTests>
-        <colg.version>0.0.1</colg.version>
         <sprign-boot.version>1.5.12.RELEASE</sprign-boot.version>
+        <hutool.version>4.0.12</hutool.version>
+        <fastjson.version>1.2.47</fastjson.version>
         <mapper.version>4.0.2</mapper.version>
-        <mysql.version>5.1.46</mysql.version>
         <druid.version>1.1.9</druid.version>
         <mapper-spring-boot.verion>2.0.2</mapper-spring-boot.verion>
         <pagehelper-spring-boot.verion>1.2.5</pagehelper-spring-boot.verion>
@@ -32,13 +32,6 @@
      -->
     <dependencyManagement>
         <dependencies>
-            <!-- colg-dependencies -->
-            <dependency>
-                <groupId>cn.colg</groupId>
-                <artifactId>colg-dependencies</artifactId>
-                <version>${colg.version}</version>
-            </dependency>
-            
             <!-- spirng-boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>

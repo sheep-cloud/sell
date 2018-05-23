@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import cn.colg.core.exception.CheckException;
+import cn.colg.exception.CheckException;
 import cn.colg.vo.ResultVO;
 import cn.hutool.core.date.DateUtil;
 import lombok.extern.slf4j.Slf4j;

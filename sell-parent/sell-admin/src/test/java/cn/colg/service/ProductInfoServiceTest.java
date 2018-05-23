@@ -1,6 +1,6 @@
 package cn.colg.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import cn.colg.BaseTest;
 import cn.colg.entity.ProductInfo;
-import cn.hutool.db.Page;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -43,12 +42,11 @@ public class ProductInfoServiceTest extends BaseTest {
     }
 
     /**
-     * Test method for {@link cn.colg.service.ProductInfoService#findAll(cn.hutool.db.Page)}.
+     * Test method for {@link cn.colg.service.ProductInfoService#findAll(cn.hutool.PageBean.Page)}.
      */
     @Test
     public void testFindAll() {
-        Page page = new Page(1, 10);
-        List<ProductInfo> list = productInfoService.findAll(page);
+        List<ProductInfo> list = productInfoService.findAll(1, 10);
         log.info("ProductInfoServiceTest.testFindAll() >> list : {}", list);
         assertNotNull(list);
     }

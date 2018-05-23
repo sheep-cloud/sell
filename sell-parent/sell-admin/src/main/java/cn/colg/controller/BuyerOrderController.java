@@ -1,9 +1,9 @@
 package cn.colg.controller;
 
-import static cn.colg.core.util.ValidUtil.isMoblePhone;
 import static cn.colg.util.CheckUtil.check;
 import static cn.colg.util.CheckUtil.notEmpty;
 import static cn.colg.util.ResultVOUtil.success;
+import static cn.colg.util.ValidUtil.isMoblePhone;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,6 @@ import cn.colg.dto.OrderDto;
 import cn.colg.form.OrderForm;
 import cn.colg.vo.ResultVO;
 import cn.hutool.core.lang.Dict;
-import cn.hutool.db.Page;
 
 /**
  * 买家订单 Controller
@@ -69,13 +68,12 @@ public class BuyerOrderController extends BaseController {
      */
     @GetMapping("/list")
     public ResultVO list(String openid,
-                         @RequestParam(defaultValue = "0") Integer page,
+                         @RequestParam(defaultValue = "1") Integer page,
                          @RequestParam(defaultValue = "10") Integer size
                         ) {
         notEmpty(openid, "微信openid必填");
-        Page p = new Page(page, size);
         // TODO colg [fastjson 定制日期字段序列化格式]
-        return success(orderService.findList(openid, p));
+        return success(orderService.findList(openid, page, size));
     }
     
     /**

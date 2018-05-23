@@ -27,7 +27,6 @@ import cn.colg.service.ProductInfoService;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.db.Page;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -109,8 +108,8 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderDto> findList(String buyerOpenid, Page page) {
-        List<OrderMaster> orderMasterList = PageHelper.startPage(page.getPageNumber(), page.getPageSize())
+    public List<OrderDto> findList(String buyerOpenid, Integer page, Integer size) {
+        List<OrderMaster> orderMasterList = PageHelper.startPage(page, size)
                                                       .doSelectPage(() -> orderMasterMapper.findList(buyerOpenid));
 
         List<OrderDto> orderDtoList = orderMasterList.stream()

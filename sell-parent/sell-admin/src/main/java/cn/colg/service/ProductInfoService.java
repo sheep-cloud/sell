@@ -4,7 +4,6 @@ import java.util.List;
 
 import cn.colg.dto.CartDto;
 import cn.colg.entity.ProductInfo;
-import cn.hutool.db.Page;
 
 /**
  * 商品信息Service
@@ -32,9 +31,10 @@ public interface ProductInfoService {
      * 分页查询商品列表
      *
      * @param page
+     * @param size
      * @return
      */
-    List<ProductInfo> findAll(Page page);
+    List<ProductInfo> findAll(Integer page, Integer size);
 
     /**
      * 新增商品

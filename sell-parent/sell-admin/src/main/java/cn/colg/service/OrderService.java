@@ -3,7 +3,6 @@ package cn.colg.service;
 import java.util.List;
 
 import cn.colg.dto.OrderDto;
-import cn.hutool.db.Page;
 
 /**
  * 订单Service
@@ -33,9 +32,10 @@ public interface OrderService {
      *
      * @param buyerOpenid
      * @param page
+     * @param size
      * @return
      */
-    List<OrderDto> findList(String buyerOpenid, Page page);
+    List<OrderDto> findList(String buyerOpenid, Integer page, Integer size);
 
     /**
      * 取消订单

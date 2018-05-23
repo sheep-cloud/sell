@@ -9,7 +9,6 @@ import cn.colg.BaseTest;
 import cn.colg.dto.OrderDto;
 import cn.colg.entity.OrderDetail;
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.db.Page;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -56,11 +55,11 @@ public class OrderServiceTest extends BaseTest {
     }
 
     /**
-     * Test method for {@link cn.colg.service.OrderService#findList(java.lang.String, cn.hutool.db.Page)}.
+     * Test method for {@link cn.colg.service.OrderService#findList(java.lang.String, cn.hutool.PageBean.Page)}.
      */
     @Test
     public void testFindList() {
-        List<OrderDto> orderDtoList = orderService.findList(BUYER_OPENID, new Page(1, 10));
+        List<OrderDto> orderDtoList = orderService.findList(BUYER_OPENID, 1, 10);
         log.info("OrderServiceTest.testFindList() >> orderDtoList : {}", orderDtoList);
     }
 

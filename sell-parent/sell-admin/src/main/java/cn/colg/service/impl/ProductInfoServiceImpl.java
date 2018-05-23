@@ -15,7 +15,6 @@ import cn.colg.dto.CartDto;
 import cn.colg.entity.ProductInfo;
 import cn.colg.enums.ProductStatusEnum;
 import cn.colg.service.ProductInfoService;
-import cn.hutool.db.Page;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -38,8 +37,8 @@ public class ProductInfoServiceImpl extends BaseServiceImpl implements ProductIn
     }
 
     @Override
-    public List<ProductInfo> findAll(Page page) {
-        return PageHelper.startPage(page.getPageNumber(), page.getPageSize())
+    public List<ProductInfo> findAll(Integer page, Integer size) {
+        return PageHelper.startPage(page, size)
                          .doSelectPage(() -> productInfoMapper.selectAll());
     }
 

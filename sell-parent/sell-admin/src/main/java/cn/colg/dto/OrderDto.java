@@ -9,8 +9,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import cn.colg.core.BaseEntity;
-import cn.colg.core.exception.CheckException;
 import cn.colg.entity.OrderDetail;
+import cn.colg.exception.CheckException;
 import cn.colg.form.OrderForm;
 import cn.colg.serializer.DateSerializer;
 import lombok.Getter;
