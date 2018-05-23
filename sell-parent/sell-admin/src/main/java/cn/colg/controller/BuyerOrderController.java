@@ -36,7 +36,7 @@ public class BuyerOrderController extends BaseController {
     /**
      * 创建订单
      *
-     * @param orderForm
+     * @param orderForm 订单表单数据
      * @return
      */
     @PostMapping("/create")
@@ -79,8 +79,8 @@ public class BuyerOrderController extends BaseController {
     /**
      * 订单详情
      *
-     * @param openid
-     * @param orderId
+     * @param openid 微信openid
+     * @param orderId 订单id
      * @return
      */
     @GetMapping("/detail")
@@ -96,8 +96,8 @@ public class BuyerOrderController extends BaseController {
     /**
      * 取消订单
      *
-     * @param openid
-     * @param orderId
+     * @param openid 微信openid
+     * @param orderId 订单id
      * @return
      */
     @PostMapping("/cancel")
