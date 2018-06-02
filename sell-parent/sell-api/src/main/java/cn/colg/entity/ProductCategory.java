@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import cn.colg.config.UUIdGenId;
+import cn.colg.config.UuidGenId;
 import cn.colg.core.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +28,7 @@ public class ProductCategory extends BaseEntity {
      */
     @Id
     @Column(name = "category_id")
-    @KeySql(genId = UUIdGenId.class)
+    @KeySql(genId = UuidGenId.class)
     private String categoryId;
 
     /**

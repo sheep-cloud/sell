@@ -1,5 +1,7 @@
 package cn.colg.dto;
 
+import static cn.colg.util.CheckUtil.throwFail;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +12,6 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import cn.colg.core.BaseEntity;
 import cn.colg.entity.OrderDetail;
-import cn.colg.exception.CheckException;
 import cn.colg.form.OrderForm;
 import cn.colg.serializer.DateSerializer;
 import lombok.Getter;
@@ -75,7 +76,7 @@ public class OrderDto extends BaseEntity {
             orderDetailList = JSON.parseArray(items, OrderDetail.class);
         } catch (Exception e) {
             log.error("OrderDto.OrderDto(orderForm) >> 对象转换异常 : {}", items);
-            throw new CheckException("【创建订单】参数不正确 : " + items);
+            throwFail("【创建订单】参数不正确 : " + items);
         }
 
         this.buyerName = orderForm.getName();

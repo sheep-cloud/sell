@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import cn.colg.config.UUIdGenId;
+import cn.colg.config.UuidGenId;
 import cn.colg.core.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +30,7 @@ public class OrderDetail extends BaseEntity {
      * 订单明细id
      */
     @Id
-    @KeySql(genId = UUIdGenId.class)
+    @KeySql(genId = UuidGenId.class)
     @Column(name = "orere_detail_id")
     private String orereDetailId;
 

@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class ResultVO extends BaseEntity {
+public class ResultVo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 

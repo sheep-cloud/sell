@@ -1,13 +1,13 @@
 package cn.colg.controller;
 
-import static cn.colg.util.ResultVOUtil.success;
+import static cn.colg.util.ResultVoUtil.success;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.colg.core.BaseController;
-import cn.colg.vo.ResultVO;
+import cn.colg.vo.ResultVo;
 
 /**
  * 买家商品 Controller
@@ -24,7 +24,7 @@ public class BuyerProductController extends BaseController {
      * @return
      */
     @GetMapping("/list")
-    public ResultVO list() {
+    public ResultVo list() {
         return success(productCategoryService.list());
     }
 }

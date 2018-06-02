@@ -8,7 +8,7 @@ import tk.mybatis.mapper.genid.GenId;
  *
  * @author colg
  */
-public class UUIdGenId implements GenId<String> {
+public class UuidGenId implements GenId<String> {
 
     @Override
     public String genId(String table, String column) {

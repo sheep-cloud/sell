@@ -1,8 +1,8 @@
 package cn.colg.controller;
 
 import static cn.colg.util.CheckUtil.check;
-import static cn.colg.util.CheckUtil.notEmpty;
-import static cn.colg.util.ResultVOUtil.success;
+import static cn.colg.util.CheckUtil.notNull;
+import static cn.colg.util.ResultVoUtil.success;
 import static cn.colg.util.ValidUtil.isMoblePhone;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.colg.core.BaseController;
 import cn.colg.dto.OrderDto;
 import cn.colg.form.OrderForm;
-import cn.colg.vo.ResultVO;
+import cn.colg.vo.ResultVo;
 import cn.hutool.core.lang.Dict;
 
 /**
@@ -40,13 +40,13 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @PostMapping("/create")
-    public ResultVO create(OrderForm orderForm) {
+    public ResultVo create(OrderForm orderForm) {
         // 校验数据
-        notEmpty(orderForm.getName(), "姓名必填");
+        notNull(orderForm.getName(), "姓名必填");
         check(isMoblePhone(orderForm.getPhone()), "手机号码格式不正确");
-        notEmpty(orderForm.getAddress(), "地址必填");
-        notEmpty(orderForm.getOpenid(), "微信openid必填");
-        notEmpty(orderForm.getItems(), "购物车不能为空");
+        notNull(orderForm.getAddress(), "地址必填");
+        notNull(orderForm.getOpenid(), "微信openid必填");
+        notNull(orderForm.getItems(), "购物车不能为空");
 
         // 包装参数
         OrderDto orderDto = new OrderDto(orderForm);
@@ -67,11 +67,11 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @GetMapping("/list")
-    public ResultVO list(String openid,
+    public ResultVo list(String openid,
                          @RequestParam(defaultValue = "1") Integer page,
                          @RequestParam(defaultValue = "10") Integer size
                         ) {
-        notEmpty(openid, "微信openid必填");
+        notNull(openid, "微信openid必填");
         // TODO colg [fastjson 定制日期字段序列化格式]
         return success(orderService.findList(openid, page, size));
     }
@@ -84,9 +84,9 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @GetMapping("/detail")
-    public ResultVO detail(String openid, String orderId) {
-        notEmpty(openid, "微信openid必填");
-        notEmpty(orderId, "订单id必填");
+    public ResultVo detail(String openid, String orderId) {
+        notNull(openid, "微信openid必填");
+        notNull(orderId, "订单id必填");
         
         // TODO colg [不安全的做法，改进]
         OrderDto orderDto = orderService.findOne(orderId);
@@ -101,9 +101,9 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @PostMapping("/cancel")
-    public ResultVO cancel(String openid, String orderId) {
-        notEmpty(openid, "微信openid必填");
-        notEmpty(orderId, "订单id必填");
+    public ResultVo cancel(String openid, String orderId) {
+        notNull(openid, "微信openid必填");
+        notNull(orderId, "订单id必填");
 
         buyerService.cancelOrder(openid, orderId);
         return success();

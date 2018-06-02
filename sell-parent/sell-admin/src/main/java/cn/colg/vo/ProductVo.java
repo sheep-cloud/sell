@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class ProductVO extends BaseEntity {
+public class ProductVo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,5 +30,5 @@ public class ProductVO extends BaseEntity {
 
     /** 商品信息列表 */
     @JSONField(name = "foods", ordinal = 1)
-    private List<ProductInfoVO> productInfoVOList;
+    private List<ProductInfoVo> productInfoVOList;
 }

@@ -13,8 +13,8 @@ import cn.colg.entity.ProductCategory;
 import cn.colg.entity.ProductInfo;
 import cn.colg.service.ProductCategoryService;
 import cn.colg.service.ProductInfoService;
-import cn.colg.vo.ProductInfoVO;
-import cn.colg.vo.ProductVO;
+import cn.colg.vo.ProductInfoVo;
+import cn.colg.vo.ProductVo;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +56,7 @@ public class ProductCategoryServiceImpl extends BaseServiceImpl implements Produ
     }
 
     @Override
-    public List<ProductVO> list() {
+    public List<ProductVo> list() {
         /*
          * colg [获取买家商品列表（包含类目）]
          *  1. 查询所有的上架商品
@@ -84,7 +84,7 @@ public class ProductCategoryServiceImpl extends BaseServiceImpl implements Produ
                                                         .map(e -> e.getCategoryType())
                                                         .collect(Collectors.toList());
         // 数据拼接
-        List<ProductVO> productVOList = new ArrayList<>();
+        List<ProductVo> productVOList = new ArrayList<>();
         
         if (CollUtil.isNotEmpty(categoryTypeList)) {
             // 通过类目编号批量查询
@@ -94,15 +94,15 @@ public class ProductCategoryServiceImpl extends BaseServiceImpl implements Produ
                 Integer categoryType = productCategory.getCategoryType();
                 
                 // 封装商品（包含类目）
-                ProductVO productVO = new ProductVO();
+                ProductVo productVO = new ProductVo();
                 productVO.setCategoryName(categoryName)
                          .setCategoryType(categoryType);
                 
                 // 封装详情
-                List<ProductInfoVO> productInfoVOList = new ArrayList<>();
+                List<ProductInfoVo> productInfoVOList = new ArrayList<>();
                 for (ProductInfo productInfo : productInfoList) {
                     if (productInfo.getCategoryType().intValue() == categoryType.intValue()) {
-                        ProductInfoVO productInfoVO = new ProductInfoVO();
+                        ProductInfoVo productInfoVO = new ProductInfoVo();
                         // 复制Bean的对象属性
                         BeanUtil.copyProperties(productInfo, productInfoVO);
                         productInfoVOList.add(productInfoVO);

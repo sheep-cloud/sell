@@ -25,7 +25,6 @@ import cn.colg.enums.PayStatusEnum;
 import cn.colg.service.OrderService;
 import cn.colg.service.ProductInfoService;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -96,8 +95,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         log.info("OrderServiceImpl.findOne() >> 订单ID : {}", orderMaster.getOrderId());
         
         List<OrderDetail> orderDetailList = orderDetailMapper.selectByOrderId(orderId);
-        
-        check(CollUtil.isNotEmpty(orderDetailList), "订单详情不存在");
+        notNull(orderDetailList, "订单详情不存在");
         log.info("OrderServiceImpl.findOne() >> 订单明细数量 : {}", orderDetailList.size());
         
         OrderDto orderDto = new OrderDto();
@@ -142,7 +140,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         
         // 返回库存（加库存）
         List<OrderDetail> orderDetailList = orderDto.getOrderDetailList();
-        check(CollUtil.isNotEmpty(orderDetailList), "订单中无商品详情");
+        notNull(orderDetailList, "订单中无商品详情");
         log.info("OrderServiceImpl.cancel() >> 订单明细数量 : {}", orderDetailList.size());
         
         List<CartDto> cartDtoList = orderDetailList.stream()

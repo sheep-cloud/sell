@@ -1,7 +1,9 @@
 package cn.colg.util;
 
+import java.util.Collection;
+import java.util.Map;
+
 import cn.colg.exception.CheckException;
-import cn.hutool.core.util.StrUtil;
 
 /**
  * 校验工具
@@ -13,72 +15,59 @@ public final class CheckUtil {
     private CheckUtil() {}
 
     /**
-     * 
      * 表达式的结果为false时，抛出校验异常
-     * 
-     * @param condition
-     * @param msgKey
-     * @param args
+     *
+     * @param condition 校验条件
+     * @param msg 错误消息提示
      */
     public static void check(boolean condition, String msg) {
         if (!condition) {
-            fail(msg);
+            throwFail(msg);
         }
     }
 
     /**
-     * 字符串为空则抛出校验异常，空的定义如下: <br />
-     * 1、为null <br />
-     * 2、为""
-     * 
-     * @param str
-     * @param msgKey
-     * @param args
-     */
-    public static void notEmpty(String str, String msg) {
-        if (StrUtil.isEmpty(str)) {
-            fail(msg);
-        }
-    }
-
-    /**
-     * 字符串为空白则抛出校验异常， 空白的定义如下： <br />
-     * 1、为null <br />
-     * 2、为不可见字符（如空格） <br />
-     * 3、""
-     * 
-     * @param str
-     * @param msgKey
-     * @param args
-     */
-    public static void notBlank(String str, String msg) {
-        if (StrUtil.isBlank(str)) {
-            fail(msg);
-        }
-    }
-
-    /**
-     * 对象为null，则抛出校验异常
-     * 
-     * @param obj
-     * @param msgKey
-     * @param args
-     */
-    public static void notNull(Object obj, String msg) {
-        if (obj == null) {
-            fail(msg);
-        }
-    }
-
-    /**
-     * 抛出校验错误异常
+     * 对象，字符串，集合为空白时，抛出校验异常，空白的定义如下：<br>
+     * 1、Object: 为null <br>
+     * 2、String: 为不可见字符（如空格） <br>
+     * 3、String: ""<br>
+     * 4、Collection/Map: size()==0 <br>
      *
-     * @param msgKey
+     * @param value 需要校验的对象，字符串，集合
+     * @param msg 错误消息提示
      */
-    private static void fail(String msg) {
-        /// 消息的参数化和国际化配置
-        // Locale locale = LocaleContextHolder.getLocale();
-        // msgKey = source.getMessage(msg, args, locale);
+    public static void notNull(Object value, String msg) {
+        if (value == null) {
+            throwFail(msg);
+        }
+
+        if (value instanceof String) {
+            // 校验 String
+            String str = (String)value;
+            if (str.trim().length() == 0) {
+                throwFail(msg);
+            }
+        } else if (value instanceof Collection<?>) {
+            // 校验 Collection
+            Collection<?> coll = (Collection<?>)value;
+            if (coll.size() == 0) {
+                throwFail(msg);
+            }
+        } else if (value instanceof Map<?, ?>) {
+            // 校验 Map
+            Map<?, ?> map = (Map<?, ?>)value;
+            if (map.size() == 0) {
+                throwFail(msg);
+            }
+        }
+    }
+
+    /**
+     * 抛出校验异常
+     *
+     * @param msg 错误提示消息
+     */
+    public static void throwFail(String msg) {
         throw new CheckException(msg);
     }
 }
