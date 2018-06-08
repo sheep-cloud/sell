@@ -146,9 +146,11 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         List<CartDto> cartDtoList = orderDetailList.stream()
                                                    .map(e -> new CartDto(e.getProductId(), e.getProductQuantity()))
                                                    .collect(Collectors.toList());
+        
         productInfoService.increasStock(cartDtoList);
         
         // 如果已支付，需要退款
+        // 支付状态（0等待支付，1支付成功；默认0）
         if (orderDto.getPayStatus().equals(PayStatusEnum.SUCCESS.getStatus())) {
             // TODO colg [支付]
         }
@@ -166,7 +168,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
          */
         
         // 判断订单状态
-        check(orderDto.getOrderStatus().intValue() == OrderStatusEnum.NEW.getStatus().intValue(), "订单状态不正确");
+        check(orderDto.getOrderStatus().equals(OrderStatusEnum.NEW.getStatus()), "订单状态不正确");
         log.info("OrderServiceImpl.finish() >> 订单状态 : {}", orderDto.getOrderStatus());
         
         // 修改订单状态
@@ -188,11 +190,11 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
          */
         
         // 判断订单状态
-        check(orderDto.getOrderStatus().intValue() == OrderStatusEnum.NEW.getStatus().intValue(), "订单状态不正确");
+        check(orderDto.getOrderStatus().equals(OrderStatusEnum.NEW.getStatus()), "订单状态不正确");
         log.info("OrderServiceImpl.paid() >> 订单状态 : {}", orderDto.getOrderStatus());
         
         // 判断支付状态
-        check(orderDto.getPayStatus().intValue() == PayStatusEnum.WAIT.getStatus().intValue(), "订单支付状态不正确");
+        check(orderDto.getPayStatus().equals(PayStatusEnum.WAIT.getStatus()), "订单支付状态不正确");
         log.info("OrderServiceImpl.paid() >> 订单支付状态 : {}", orderDto.getPayStatus());
         
         // 修改支付状态

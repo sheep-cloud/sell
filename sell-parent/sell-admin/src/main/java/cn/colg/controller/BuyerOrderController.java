@@ -26,13 +26,6 @@ import cn.hutool.core.lang.Dict;
 @RequestMapping("/buyer/order")
 public class BuyerOrderController extends BaseController {
 
-    /*
-     * colg [业务]
-     *  创建订单
-     *  订单列表
-     *  订单详情
-     *  取消订单
-     */
     /**
      * 创建订单
      *
@@ -67,10 +60,8 @@ public class BuyerOrderController extends BaseController {
      */
     @GetMapping("/list")
     public ResultVo list(@RequestParam String openid,
-                         @RequestParam(defaultValue = "1") Integer page,
-                         @RequestParam(defaultValue = "10") Integer size
-                        ) {
-        // notNull(openid, "微信openid必填");
+                         @RequestParam Integer page,
+                         @RequestParam Integer size) {
         // TODO colg [fastjson 定制日期字段序列化格式]
         return success(orderService.findList(openid, page, size));
     }

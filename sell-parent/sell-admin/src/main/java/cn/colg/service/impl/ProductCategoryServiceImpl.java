@@ -100,6 +100,13 @@ public class ProductCategoryServiceImpl extends BaseServiceImpl implements Produ
                 
                 // 封装详情
                 List<ProductInfoVo> productInfoVOList = new ArrayList<>();
+ /*               productInfoList.stream()
+                               .filter(e -> e.getCategoryType().equals(categoryType))
+                               .forEach(e -> {
+                                   BeanUtil.copyProperties(e, target);
+                               });
+                ;*/
+                
                 for (ProductInfo productInfo : productInfoList) {
                     if (productInfo.getCategoryType().intValue() == categoryType.intValue()) {
                         ProductInfoVo productInfoVO = new ProductInfoVo();
