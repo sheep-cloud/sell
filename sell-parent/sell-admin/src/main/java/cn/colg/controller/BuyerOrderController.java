@@ -54,8 +54,7 @@ public class BuyerOrderController extends BaseController {
         OrderDto createResult = orderService.create(orderDto);
 
         // 返回orderId
-        Dict dict = new Dict(1).set("orderId", createResult.getOrderId());
-        return success(dict);
+        return success(new Dict(2).set("orderId", createResult.getOrderId()));
     }
 
     /**
@@ -67,11 +66,11 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @GetMapping("/list")
-    public ResultVo list(String openid,
+    public ResultVo list(@RequestParam String openid,
                          @RequestParam(defaultValue = "1") Integer page,
                          @RequestParam(defaultValue = "10") Integer size
                         ) {
-        notNull(openid, "微信openid必填");
+        // notNull(openid, "微信openid必填");
         // TODO colg [fastjson 定制日期字段序列化格式]
         return success(orderService.findList(openid, page, size));
     }
@@ -84,9 +83,10 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @GetMapping("/detail")
-    public ResultVo detail(String openid, String orderId) {
-        notNull(openid, "微信openid必填");
-        notNull(orderId, "订单id必填");
+    public ResultVo detail(@RequestParam String openid,
+                           @RequestParam String orderId) {
+        // notNull(openid, "微信openid必填");
+        // notNull(orderId, "订单id必填");
         
         // TODO colg [不安全的做法，改进]
         OrderDto orderDto = orderService.findOne(orderId);
@@ -101,9 +101,10 @@ public class BuyerOrderController extends BaseController {
      * @return
      */
     @PostMapping("/cancel")
-    public ResultVo cancel(String openid, String orderId) {
-        notNull(openid, "微信openid必填");
-        notNull(orderId, "订单id必填");
+    public ResultVo cancel(@RequestParam String openid,
+                           @RequestParam String orderId) {
+        // notNull(openid, "微信openid必填");
+        // notNull(orderId, "订单id必填");
 
         buyerService.cancelOrder(openid, orderId);
         return success();

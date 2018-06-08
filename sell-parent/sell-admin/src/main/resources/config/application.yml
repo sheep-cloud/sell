@@ -30,7 +30,6 @@ pagehelper:
 logging:
   level:
     cn.colg.mapper: debug
-    org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor: debug
     
 ---
 server:

@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import cn.hutool.core.util.StrUtil;
 
 /**
- * 字段验证工具
+ * 字段验证工具 <br>
  * 
  * <a href="http://www.runoob.com/java/java-regular-expressions.html">正则表达式</a>
  *

@@ -18,8 +18,10 @@
 	</resultMap>
 	
 	<select id="findList" resultType="cn.colg.entity.OrderMaster">
-		SELECT *
-		FROM order_master om
+		SELECT
+            om.*
+		FROM
+            order_master om
 		WHERE om.buyer_openid = #{buyerOpenid}
 	</select>
 </mapper>

@@ -17,8 +17,10 @@
 	</resultMap>
 	
 	<select id="selectByOrderId" resultType="cn.colg.entity.OrderDetail">
-		SELECT *
-		FROM order_detail od
+		SELECT
+            od.*
+		FROM
+            order_detail od
 		WHERE od.order_id = #{orderId}
 	</select>
 </mapper>

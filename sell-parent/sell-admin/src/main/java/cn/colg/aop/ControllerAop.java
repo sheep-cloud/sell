@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class ControllerAop {
 
-    @Pointcut("execution(public cn.colg.vo.ResultVO *(..))")
+    @Pointcut("execution(public cn.colg.vo.ResultVo *(..))")
     private void controllerMethod() {}
 
     @Around("controllerMethod()")
@@ -54,12 +54,14 @@ public class ControllerAop {
         if (e instanceof CheckException || e instanceof IllegalArgumentException) {
             log.info(point.getSignature() + " 校验异常/参数非法 : {}", e.getLocalizedMessage());
             // 校验出错，参数非法
-            resultVO.setMsg(e.getLocalizedMessage()).setCode(ResultVo.CHECK_FAIL);
+            resultVO.setMsg(e.getLocalizedMessage())
+                    .setCode(ResultVo.CHECK_FAIL);
         }
         // 未知异常
         else {
             log.error(point.getSignature() + " ERROR : {}", e);
-            resultVO.setMsg(e.toString()).setCode(ResultVo.UNKNOWN_FAIL);
+            resultVO.setMsg(e.toString())
+                    .setCode(ResultVo.UNKNOWN_FAIL);
         }
 
         return resultVO;

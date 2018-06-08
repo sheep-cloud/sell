@@ -18,8 +18,10 @@
 	</resultMap>
 
 	<select id="findUpAll" resultType="cn.colg.entity.ProductInfo">
-		SELECT *
-		FROM product_info `pi`
+		SELECT
+            `pi`.*
+		FROM
+            product_info `pi`
 		WHERE `pi`.product_status = #{status}
 	</select>
 </mapper>
