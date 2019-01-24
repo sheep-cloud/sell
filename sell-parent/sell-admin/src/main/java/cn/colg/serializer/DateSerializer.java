@@ -20,7 +20,7 @@ public class DateSerializer implements ObjectSerializer {
      * 毫秒转为秒
      *
      * @param serializer
-     * @param object 需要转换为Json的对象。
+     * @param object 需要转换为Json的对象
      * @param fieldName 父对象字段名称
      * @param fieldType 父对象字段类型
      * @param features

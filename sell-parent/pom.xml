@@ -18,14 +18,14 @@
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <skipTests>true</skipTests>
-        <sprign-boot.version>1.5.13.RELEASE</sprign-boot.version>
-        <hutool.version>4.0.12</hutool.version>
-        <commons-lang3.version>3.7</commons-lang3.version>
-        <fastjson.version>1.2.47</fastjson.version>
-        <mapper.version>4.0.2</mapper.version>
+        <sprign-boot.version>1.5.19.RELEASE</sprign-boot.version>
+        <hutool.version>4.4.2</hutool.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <fastjson.version>1.2.55</fastjson.version>
+        <mapper.version>4.1.4</mapper.version>
         <druid-spring-boot.version>1.1.10</druid-spring-boot.version>
-        <mapper-spring-boot.verion>2.0.2</mapper-spring-boot.verion>
-        <pagehelper-spring-boot.verion>1.2.5</pagehelper-spring-boot.verion>
+        <mapper-spring-boot.verion>2.1.4</mapper-spring-boot.verion>
+        <pagehelper-spring-boot.verion>1.2.10</pagehelper-spring-boot.verion>
     </properties>
     
     <!-- 

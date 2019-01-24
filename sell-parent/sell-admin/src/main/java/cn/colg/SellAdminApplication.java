@@ -14,7 +14,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication
 public class SellAdminApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SellAdminApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SellAdminApplication.class, args);
+    }
 }

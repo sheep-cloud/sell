@@ -75,6 +75,13 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper-spring-boot.verion}</version>
         </dependency>
+        
+        <!-- weixin-java -->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-cp</artifactId>
+            <version>3.1.7.BETA</version>
+        </dependency>
 
     </dependencies>
 

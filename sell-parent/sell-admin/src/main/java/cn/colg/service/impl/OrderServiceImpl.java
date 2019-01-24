@@ -25,7 +25,7 @@ import cn.colg.enums.PayStatusEnum;
 import cn.colg.service.OrderService;
 import cn.colg.service.ProductInfoService;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.IdUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -53,7 +53,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         // 定义一个总价
         BigDecimal orderAmount = new BigDecimal(BigInteger.ZERO);
         // 定义一个订单id（不能用自动生成的）
-        String orderId = RandomUtil.simpleUUID();
+        String orderId = IdUtil.fastSimpleUUID();
 
         // 1. 查询商品（数量，价格）
         List<OrderDetail> orderDetailList = orderDto.getOrderDetailList();
