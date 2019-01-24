@@ -47,7 +47,8 @@ public class BuyerOrderController extends BaseController {
         OrderDto createResult = orderService.create(orderDto);
 
         // 返回orderId
-        return success(new Dict(2).set("orderId", createResult.getOrderId()));
+        return success(Dict.create()
+                           .set("orderId", createResult.getOrderId()));
     }
 
     /**

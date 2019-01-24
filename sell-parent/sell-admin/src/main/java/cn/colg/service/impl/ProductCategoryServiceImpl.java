@@ -89,35 +89,29 @@ public class ProductCategoryServiceImpl extends BaseServiceImpl implements Produ
         if (CollUtil.isNotEmpty(categoryTypeList)) {
             // 通过类目编号批量查询
             List<ProductCategory> productCategorieList = this.selectByCategoryType(categoryTypeList);
-            for (ProductCategory productCategory : productCategorieList) {
+            productCategorieList.forEach(productCategory -> {
                 String categoryName = productCategory.getCategoryName();
                 Integer categoryType = productCategory.getCategoryType();
                 
                 // 封装商品（包含类目）
-                ProductVo productVO = new ProductVo();
-                productVO.setCategoryName(categoryName)
-                         .setCategoryType(categoryType);
+                ProductVo productVO = new ProductVo().setCategoryName(categoryName)
+                                                     .setCategoryType(categoryType);
                 
                 // 封装详情
                 List<ProductInfoVo> productInfoVOList = new ArrayList<>();
- /*               productInfoList.stream()
-                               .filter(e -> e.getCategoryType().equals(categoryType))
-                               .forEach(e -> {
-                                   BeanUtil.copyProperties(e, target);
-                               });
-                ;*/
                 
-                for (ProductInfo productInfo : productInfoList) {
+                productInfoList.forEach(productInfo -> {
                     if (productInfo.getCategoryType().intValue() == categoryType.intValue()) {
                         ProductInfoVo productInfoVO = new ProductInfoVo();
                         // 复制Bean的对象属性
                         BeanUtil.copyProperties(productInfo, productInfoVO);
                         productInfoVOList.add(productInfoVO);
                     }
-                }
+                });
+                
                 productVO.setProductInfoVOList(productInfoVOList);
                 productVOList.add(productVO);
-            }
+            });
         }
         
         return productVOList;

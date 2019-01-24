@@ -57,6 +57,7 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
 
         // 1. 查询商品（数量，价格）
         List<OrderDetail> orderDetailList = orderDto.getOrderDetailList();
+        
         for (OrderDetail orderDetail : orderDetailList) {
             ProductInfo productInfo = productInfoService.findOne(orderDetail.getProductId());
             notNull(productInfo, "商品不存在");

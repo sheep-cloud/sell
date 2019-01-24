@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 9001
   context-path: /sell
 spring:
   profiles:
@@ -33,6 +33,6 @@ logging:
     
 ---
 server:
-  port: 8002
+  port: 9002
 spring:
   profiles: dev
